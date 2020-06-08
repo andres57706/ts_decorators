@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: node_development
+    image: node:lts-buster
+    working_dir: /usr/app/src 
+    volumes:
+      - ./src/:/usr/app/src
+      - ~/.ssh:/root/.ssh/
+    ports: 
+      - 8080:5000
+    command: yarn run dev
+networks: 
+  host:
+    external: true
